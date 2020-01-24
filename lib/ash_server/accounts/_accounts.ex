@@ -22,7 +22,7 @@ defmodule AshServer.Accounts do
   def list_users(args \\ %{}) do
     User
     |> QueryHelpers.build_query(args)
-    |> Repo.all
+    |> Repo.all()
   end
 
   @doc """
@@ -42,13 +42,15 @@ defmodule AshServer.Accounts do
       nil
 
   """
-  def get_user!(id), do: Repo.get!(User, id)
+  def get_user!(id) do
+    Repo.get!(User, id)
+  end
 
   def get_user_by(args \\ %{}) do
     User
     |> QueryHelpers.build_query(args)
     |> first
-    |> Repo.one
+    |> Repo.one()
   end
 
   @doc """

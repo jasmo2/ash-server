@@ -3,11 +3,13 @@ defmodule AshServer.Accounts.User do
   import Ecto.Query, warn: false
   import Ecto.Changeset
   use Pow.Ecto.Schema
+  alias AshServer.Forms.Form
 
   schema "users" do
     pow_user_fields()
     field(:username, :string)
 
+    has_many(:forms, Form)
     timestamps()
   end
 
@@ -23,9 +25,10 @@ defmodule AshServer.Accounts.User do
   def filter_with(query, filter) do
     Enum.reduce(filter, query, fn
       {:email, email}, query ->
-        from q in query, where: ilike(q.email, ^"%#{email}%")
+        from(q in query, where: ilike(q.email, ^"%#{email}%"))
+
       {:username, username}, query ->
-        from q in query, where: ilike(q.username, ^"%#{username}%")
+        from(q in query, where: ilike(q.username, ^"%#{username}%"))
     end)
   end
 end
