@@ -14,7 +14,7 @@ config :ash_server,
 # Configures the endpoint
 config :ash_server, AshServerWeb.Endpoint,
   url: [host: "localhost"],
-  secret_key_base: "UTZpjBUUS80oIqUf0sNwECRFMuiQtUabqS5wRdZBYCo43sZXV4bg3tOCbyX8DjId",
+  secret_key_base: "A24l/9hCJ5nTx5kfO1S3sEQzEXmT6AZW2MEhIVZN6tmAafuJeP9Lm6JiLY/VJL8n",
   render_errors: [view: AshServerWeb.ErrorView, accepts: ~w(json)],
   pubsub: [name: AshServer.PubSub, adapter: Phoenix.PubSub.PG2]
 

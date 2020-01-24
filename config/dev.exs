@@ -37,6 +37,6 @@ config :phoenix, :plug_init_mode, :runtime
 config :ash_server, AshServer.Repo,
   username: "postgres",
   password: "postgres",
-  database: "ash_server_dev",
+  database: "lambda_forms_dev",
   hostname: "localhost",
   pool_size: 10

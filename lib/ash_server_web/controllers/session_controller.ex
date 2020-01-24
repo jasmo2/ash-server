@@ -5,8 +5,8 @@ defmodule AshServerWeb.SessionController do
   alias AshServer.Accounts.User
   alias AshServerWeb.AuthPlug
 
-  def create(conn, %{"user" => %{"username" => username, "password" => password}}) do
-    case Accounts.get_user_by_username!(username) do
+  def create(conn, %{"user" => %{"email" => email, "password" => password}}) do
+    case Accounts.get_user_by_email!(email) do
       %User{email: email} ->
         create(conn, %{
           "user" => %{
@@ -18,7 +18,7 @@ defmodule AshServerWeb.SessionController do
       nil ->
         conn
         |> put_status(401)
-        |> json(%{ error: %{ status: 401, message: "Invalid credentials" }})
+        |> json(%{error: %{status: 401, message: "Invalid credentials"}})
     end
   end
 
@@ -32,7 +32,7 @@ defmodule AshServerWeb.SessionController do
             token: conn.private[:api_auth_token],
             renewToken: conn.private[:api_renew_token],
             user: %{
-              email: conn.assigns.current_user.email,
+              email: conn.assigns.current_user.email
             }
           }
         })

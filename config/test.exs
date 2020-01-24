@@ -13,6 +13,6 @@ config :logger, level: :warn
 config :ash_server, AshServer.Repo,
   username: "postgres",
   password: "postgres",
-  database: "ash_server_test",
+  database: "lambda_forms_test",
   hostname: "localhost",
   pool: Ecto.Adapters.SQL.Sandbox
